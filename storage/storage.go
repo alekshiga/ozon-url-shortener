@@ -12,6 +12,10 @@ var (
 	ErrCodeExists = errors.New("short code already exists")
 )
 
+// Storage
+// сохранить пару
+// найти URL по коду
+// найти код по URL.
 type Storage interface {
 	Save(ctx context.Context, originalURL, shortCode string) error
 	GetByShort(ctx context.Context, shortCode string) (string, error)
