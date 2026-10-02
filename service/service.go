@@ -4,18 +4,21 @@ import (
 	"context"
 	"errors"
 
-	"github.com/alekshiga/ozon-url-shortener/encoder"
 	"github.com/alekshiga/ozon-url-shortener/storage"
 )
 
 const maxGenerateAttempts = 5
 
-type Service struct {
-	storage storage.Storage
-	encoder *encoder.Encoder
+type Encoder interface {
+	Encode() (string, error)
 }
 
-func New(storage storage.Storage, encoder *encoder.Encoder) *Service {
+type Service struct {
+	storage storage.Storage
+	encoder Encoder
+}
+
+func New(storage storage.Storage, encoder Encoder) *Service {
 	return &Service{
 		storage: storage,
 		encoder: encoder,

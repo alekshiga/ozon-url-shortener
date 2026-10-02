@@ -12,7 +12,7 @@ const (
 
 type Encoder struct{}
 
-func NewEncoder() *Encoder {
+func New() *Encoder {
 	return &Encoder{}
 }
 
